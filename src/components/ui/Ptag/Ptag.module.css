@@ -14,7 +14,6 @@
 .xs {
   font-size: 0.75rem;
   line-height: 1rem;
-  font-family: var(--pt-caption);
   color: var(--accent-color);
 }
 
