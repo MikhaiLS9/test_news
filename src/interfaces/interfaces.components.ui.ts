@@ -4,6 +4,7 @@ import {
   HTMLInputTypeAttribute,
   InputHTMLAttributes,
   PropsWithChildren,
+  TextareaHTMLAttributes,
 } from "react";
 import { PropsWithClassName } from "./interfaces.custom";
 
@@ -56,4 +57,11 @@ export interface HtagProps
     PropsWithChildren {
   tag: "h1" | "h2" | "h3";
   className?: string;
+}
+
+export interface TextAreaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement>,
+    PropsWithClassName {
+  label?: string;
+  error?: string;
 }
