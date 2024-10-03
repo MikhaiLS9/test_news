@@ -1,0 +1,6 @@
+.createNews {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacing-medium);
+}
+

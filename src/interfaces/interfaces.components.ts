@@ -8,6 +8,11 @@ export interface NewsItemProps {
   date: Date;
 }
 
+export type NewsDataProps = { news: NewsItemProps[] };
 
 export type PropsWithChildrenAndClassName = {} & PropsWithChildren &
   PropsWithClassName;
+
+export type CreateNewsProps = {
+  setCreateNews: (createNews: NewsItemProps[] | null) => void;
+};

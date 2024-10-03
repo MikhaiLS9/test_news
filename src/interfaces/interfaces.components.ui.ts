@@ -7,12 +7,11 @@ import {
   TextareaHTMLAttributes,
 } from "react";
 import { PropsWithClassName } from "./interfaces.custom";
+import { PropsWithChildrenAndClassName } from "./interfaces.components";
 
 export interface ButtonBaseProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    PropsWithClassName,
-    PropsWithChildren {
-  className?: string;
+    PropsWithChildrenAndClassName {
   isDisabled?: boolean;
   lightColorVersion?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;

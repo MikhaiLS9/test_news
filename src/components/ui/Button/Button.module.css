@@ -6,14 +6,12 @@
   padding: 0.75rem 1.5625rem;
   font-weight: bold;
   font-size: 14px;
-  color: white;
+  color: var(--text-color);
   border: none;
   min-width: 140px;
   height: 42px;
   border-radius: 6px;
   cursor: pointer;
-  padding-inline: auto;
-  font-family: var(--font-open-sans);
 }
 
 .m {
@@ -31,11 +29,11 @@
 }
 
 .accent {
-  background: var(--active-color);
+  background: var(--primary-color);
 }
 
 .secondary {
-  background: var(--accent-color);
+  background: var(--secondary-color);
 }
 .none {
   padding: 0;
@@ -49,4 +47,9 @@
   outline: none;
   box-shadow: none;
   color: inherit;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+  color: var(--hover-text-color);
 }

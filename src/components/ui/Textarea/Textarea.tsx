@@ -7,7 +7,7 @@ import styles from "./TextArea.module.css";
 
 const TextArea = ({ label, error, className, ...props }: TextAreaProps) => {
   return (
-    <div className={cn(styles.textarea, className)}>
+    <div className={cn(styles.textareaContainer, className)}>
       {label && <label>{label}</label>}
       <textarea {...props} />
       {error && (

@@ -10,8 +10,8 @@ export const useLocalStorage = (key: EUseLocalStorage) => {
   };
 
   const getItem = () => {
+    const item = window.localStorage.getItem(key);
     try {
-      const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : undefined;
     } catch (error) {
       console.log(error);
@@ -25,6 +25,8 @@ export const useLocalStorage = (key: EUseLocalStorage) => {
       console.log(error);
     }
   };
+
+
 
   return { setItem, getItem, removeItem };
 };
