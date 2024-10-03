@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
+.input {
+  grid-row: 2;
+  border: 1px solid #cdcad9;
+  border-radius: 8px;
+  padding: 13px;
+  transition: border-color 0.3s;
+}
+
+.label {
+  grid-row: 1;
+  top: 45%;
+  left: 16px;
+  font-size: 16px;
+  color: #8c87a0;
+}
+
+.input:focus {
+  border-color: #007bff;
+  transition: border-color 0.3s;
+  outline: none;
+}

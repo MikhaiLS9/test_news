@@ -1,0 +1,63 @@
+.p {
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-family: var(--pt-caption);
+  color: var(--accent-color);
+}
+
+.s {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+.m {
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+.l {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.xl {
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+}
+
+.opacity {
+  color: rgb(61, 61, 61,0.5);
+}
+.accent {
+  color: var(--accent-color);
+}
+
+.isActive {
+  color: var(--text-secondary);
+}
+
+.isError {
+  color: #e0675f;
+}
+
+.fontWeight700 {
+  font-weight: 700;
+}
+
+
+.fontWeight500 {
+  font-weight: 500;
+}
+
+
