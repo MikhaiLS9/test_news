@@ -1,12 +1,16 @@
-import { PropsWithChildren } from "react";
-import { PropsWithClassName } from "../../interfaces/interfaces.custom";
+import { PropsWithChildrenAndClassName } from "../../interfaces/interfaces.components";
+
+import DefaultLayout from "../DefaultLayout/DefaultLayout";
 
 import cn from "classnames";
 import styles from "./Main.module.css";
 
-type MainProps = {} & PropsWithChildren & PropsWithClassName;
-const Main = ({ children, className }: MainProps) => {
-  return <div className={cn(styles.main, className)}>{children}</div>;
+const Main = ({ children, className }: PropsWithChildrenAndClassName) => {
+  return (
+    <DefaultLayout className={cn(styles.main, className)}>
+      {children}
+    </DefaultLayout>
+  );
 };
 
 export default Main;

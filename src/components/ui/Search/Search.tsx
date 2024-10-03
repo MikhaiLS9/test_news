@@ -1,4 +1,4 @@
-import { PropsWithClassName } from "../../../interfaces/interfaces.components.ui";
+import { PropsWithClassName } from "../../../interfaces/interfaces.custom";
 
 import cn from "classnames";
 import styles from "./Search.module.css";

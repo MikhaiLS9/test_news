@@ -9,4 +9,5 @@ export interface NewsItemProps {
 }
 
 
-export type DefaultLayoutProps = {} & PropsWithChildren & PropsWithClassName;
+export type PropsWithChildrenAndClassName = {} & PropsWithChildren &
+  PropsWithClassName;

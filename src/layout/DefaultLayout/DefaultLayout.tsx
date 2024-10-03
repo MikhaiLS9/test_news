@@ -7,7 +7,6 @@ const DefaultLayout = ({
   children,
   className,
 }: PropsWithChildrenAndClassName) => {
-  return <div className={cn(styles.container, className)}>{children}</div>;
+  return <div className={cn(styles.defaultLayout, className)}>{children}</div>;
 };
-
 export default DefaultLayout;
