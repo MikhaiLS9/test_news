@@ -15,7 +15,7 @@ const CreateNewsForm = ({
     <form className={styles.createNewsForm} onSubmit={onSubmit}>
       <Input name="title" placeholder="Название статьи" />
       <TextArea name="content" placeholder="Описание статьи" />
-      <Button appearance="accent" size="l">
+      <Button appearance="accent" size="xxl">
         Опубликовать новость
       </Button>
     </form>

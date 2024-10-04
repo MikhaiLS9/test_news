@@ -1,18 +1,14 @@
 .createNewsForm {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--spacing-medium);
-    max-width: 520px;
-    width: 100%;
-  }
-  
-  .createNewsForm textarea {
-    max-width: 520px;
-    min-height: 250px;
-    max-height: 300px;
-  }
-  
-  .createNewsForm button {
-    align-self: flex-start;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--spacing-medium);
+  width: 100%;
+}
+
+.createNewsForm textarea {
+  min-height: 150px;
+}
+
+.createNewsForm button {
+  align-self: flex-start;
+}

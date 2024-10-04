@@ -9,6 +9,7 @@
   border-radius: 8px;
   padding: 13px;
   transition: border-color 0.3s;
+  resize: none;
 }
 
 .textareaContainer > label {
@@ -18,5 +19,3 @@
   font-size: 16px;
   color: #8c87a0;
 }
-
-

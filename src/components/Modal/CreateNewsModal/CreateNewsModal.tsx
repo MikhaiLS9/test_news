@@ -32,7 +32,7 @@ const CreateNewsModal = ({
 
     setItem(updatedItems);
     setCreateNews(updatedItems);
-    setIsVisible(false);
+    setIsVisible(false)
   };
 
   return (

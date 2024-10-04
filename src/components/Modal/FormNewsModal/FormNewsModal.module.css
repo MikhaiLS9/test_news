@@ -4,11 +4,16 @@
   justify-content: space-between;
   row-gap: var(--spacing-medium);
   background-color: var(--background-color);
-  height: calc(100dvh - 150px);
-  width: 80%;
+  width: clamp(300px, 80%, 768px);
   border-radius: var(--border-radius-m);
   padding: var(--spacing-medium);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  height: calc(100dvh - 250px);
+}
+
+.main {
+  height: 100%;
 }

@@ -19,9 +19,8 @@ const FormNewsModal = ({
       zIndex={zIndex}
       className={styles.formNewsModal}
     >
-      <div>header</div>
-      <div>{children}</div>
-      <div>footer</div>
+      <div className={styles.header}>header</div>
+      <div className={styles.main}>{children}</div>
     </Modal>
   );
 };
