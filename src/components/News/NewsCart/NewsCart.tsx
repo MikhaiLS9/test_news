@@ -47,34 +47,35 @@ const CurrentNewsItems = ({ currentNews }: CurrentNewsItems) => {
 
   return (
     <>
-      {currentNews.map((news) => (
-        <div key={news?.id} className={styles.currentNews}>
-          <Ptag size="s">{getDateRu(news?.date)}</Ptag>
-          <Htag tag="h2" className={styles.currentNewsTitle}>
-            {news?.title}
-          </Htag>
-          <Ptag size="m" className={styles.currentNewsContent}>
-            {news?.content}
-          </Ptag>
-          <Button
-            appearance="ghost"
-            size="none"
-            onClick={() => handleCondolerModal(news?.id)}
-          >
-            читать полностью...
-          </Button>
+      {Array.isArray(currentNews) &&
+        currentNews.map((news) => (
+          <div key={news?.id} className={styles.currentNews}>
+            <Ptag size="s">{getDateRu(news?.date)}</Ptag>
+            <Htag tag="h2" className={styles.currentNewsTitle}>
+              {news?.title}
+            </Htag>
+            <Ptag size="m" className={styles.currentNewsContent}>
+              {news?.content}
+            </Ptag>
+            <Button
+              appearance="ghost"
+              size="none"
+              onClick={() => handleCondolerModal(news?.id)}
+            >
+              читать полностью...
+            </Button>
 
-          {visibleModalId === news.id && (
-            <CurrentNewsModal
-              news={news}
-              isDisable={false}
-              isVisible={modalIsVisible}
-              setIsVisible={setVisibleModalId}
-              zIndex="100"
-            />
-          )}
-        </div>
-      ))}
+            {visibleModalId === news.id && (
+              <CurrentNewsModal
+                news={news}
+                isDisable={false}
+                isVisible={modalIsVisible}
+                setIsVisible={setVisibleModalId}
+                zIndex="100"
+              />
+            )}
+          </div>
+        ))}
     </>
   );
 };

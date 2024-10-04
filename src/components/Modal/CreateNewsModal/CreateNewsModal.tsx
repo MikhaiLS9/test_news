@@ -30,9 +30,10 @@ const CreateNewsModal = ({
     const currentItems = getItem() || [];
     const updatedItems = [...currentItems, newItem];
 
-    setItem(updatedItems);
-    setCreateNews(updatedItems);
-    setIsVisible(false)
+    setItem([...updatedItems]);
+    setCreateNews([...updatedItems]);
+
+    setIsVisible(false);
   };
 
   return (
