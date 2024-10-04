@@ -9,19 +9,19 @@
   color: var(--text-color);
   border: none;
   min-width: 140px;
-  height: 42px;
-  border-radius: 6px;
+  height: auto;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
 .m {
   gap: 0.625rem;
-  line-height: 1.5rem;
+  width: 200px;
 }
 
 .l {
   gap: 0.938rem;
-  line-height: 2rem;
+  width: 300px;
 }
 
 .xxl {
@@ -48,8 +48,10 @@
   box-shadow: none;
   color: inherit;
 }
-
-.button:hover {
+.ghost:hover {
+  background-color: none;
+}
+.accent:hover {
   background-color: var(--hover-color);
   color: var(--hover-text-color);
 }

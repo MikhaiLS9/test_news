@@ -14,7 +14,11 @@
   --spacing-large: 24px;
 
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
   --border-radius: 8px;
+  --border-radius-m: 16px;
+
+  --border-s: 1px solid #dbdbdb;
 
   --success-color: #27ae60;
   --warning-color: #f39c12;

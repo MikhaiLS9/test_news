@@ -1,15 +1,24 @@
-import Htag from "../../ui/Htag/Htag";
+import { CreateNewsProps } from "../../../interfaces/interfaces.components";
+import { useState } from "react";
+
 import CreateNewsForm from "./CreateNewsForm/CreateNewsForm";
+import Button from "../../ui/Button/Button";
 
 import styles from "./CreateNews.module.css";
-import { CreateNewsProps } from "../../../interfaces/interfaces.components";
 
 const CreateNews = ({ setCreateNews }: CreateNewsProps) => {
+  const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
   return (
     <section className={styles.createNews}>
-      <Htag tag="h2">Создайте новость</Htag>
+      <Button
+        appearance="accent"
+        size="m"
+        onClick={() => setModalIsVisible(!modalIsVisible)}
+      >
+        Создайте новость
+      </Button>
 
-      <CreateNewsForm setCreateNews={setCreateNews} />
+      {modalIsVisible && <CreateNewsForm setCreateNews={setCreateNews} />}
     </section>
   );
 };

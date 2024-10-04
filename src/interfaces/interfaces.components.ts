@@ -5,7 +5,7 @@ export interface NewsItemProps {
   id: number;
   title: string;
   content: string;
-  date: Date;
+  date: string;
 }
 
 export type NewsDataProps = { news: NewsItemProps[] };

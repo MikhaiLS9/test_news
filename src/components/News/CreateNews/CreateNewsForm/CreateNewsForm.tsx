@@ -31,7 +31,7 @@ const CreateNewsForm = ({ setCreateNews }: CreateNewsProps) => {
     <form className={styles.createNewsForm} onSubmit={submitCreateNews}>
       <Input name="title" placeholder="Название статьи" />
       <TextArea name="content" placeholder="Описание статьи" />
-      <Button appearance="accent" size="m">
+      <Button appearance="accent" size="l">
         Опубликовать новость
       </Button>
     </form>
