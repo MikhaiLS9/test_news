@@ -1,10 +1,9 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ModalProps } from "../../interfaces/interfaces.components";
 
 import cn from "classnames";
 import styles from "./Modal.module.css";
-
 
 const Modal = ({
   children,
@@ -14,6 +13,7 @@ const Modal = ({
   isDisable,
   className,
 }: ModalProps) => {
+    
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = "hidden";

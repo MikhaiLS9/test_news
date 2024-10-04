@@ -1,7 +1,7 @@
 import { CreateNewsProps } from "../../../interfaces/interfaces.components";
 import { useState } from "react";
 
-import CreateNewsForm from "./CreateNewsForm/CreateNewsForm";
+import CreateNewsModal from "../../Modal/CreateNewsModal/CreateNewsModal";
 import Button from "../../ui/Button/Button";
 
 import styles from "./CreateNews.module.css";
@@ -17,8 +17,13 @@ const CreateNews = ({ setCreateNews }: CreateNewsProps) => {
       >
         Создайте новость
       </Button>
-
-      {modalIsVisible && <CreateNewsForm setCreateNews={setCreateNews} />}
+      <CreateNewsModal
+        setCreateNews={setCreateNews}
+        isDisable={false}
+        isVisible={modalIsVisible}
+        setIsVisible={setModalIsVisible}
+        zIndex="100"
+      />
     </section>
   );
 };
