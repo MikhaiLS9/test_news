@@ -16,3 +16,15 @@ export type PropsWithChildrenAndClassName = {} & PropsWithChildren &
 export type CreateNewsProps = {
   setCreateNews: (createNews: NewsItemProps[] | null) => void;
 };
+
+export type ModalVisibleProps = {
+  isVisible: boolean;
+  setIsVisible: (prev: boolean) => void;
+};
+
+export interface ModalProps
+  extends ModalVisibleProps,
+    PropsWithChildrenAndClassName {
+  zIndex: "100" | "200" | "300";
+  isDisable: boolean;
+}
