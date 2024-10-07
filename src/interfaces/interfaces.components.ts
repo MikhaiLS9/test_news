@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import { PropsWithClassName } from "./interfaces.custom";
+import { CurrentNewsItems } from "../components/News/NewsCart/NewsCart";
 
 export interface NewsItemProps {
   id: number;
@@ -28,3 +29,10 @@ export interface ModalProps
   zIndex: "100" | "200" | "300";
   isDisable: boolean;
 }
+
+
+export type NewsProps = { news: NewsItemProps };
+export type CurrentNewsModalProps = {} & ModalProps &
+  NewsProps &
+  CurrentNewsItems;
+

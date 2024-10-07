@@ -1,11 +1,14 @@
 import { FormEvent, useState } from "react";
 import {
-  ModalProps,
+  CurrentNewsModalProps,
   NewsItemProps,
+  NewsProps,
 } from "../../../interfaces/interfaces.components";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
-import { EUseLocalStorage } from "../../../interfaces/enum";
-import { CurrentNewsItems } from "../../News/NewsCart/NewsCart";
+import {
+  ECurrentNewsButtonsText,
+  EUseLocalStorage,
+} from "../../../interfaces/enum";
 
 import getDateRu from "../../helpers/getDateRu";
 import Button from "../../ui/Button/Button";
@@ -16,16 +19,6 @@ import Input from "../../ui/Input/Input";
 import TextArea from "../../ui/TextArea/TextArea";
 
 import styles from "./CurrentNewsModal.module.css";
-
-export type NewsProps = { news: NewsItemProps };
-export type CurrentNewsModalProps = {} & ModalProps &
-  NewsProps &
-  CurrentNewsItems;
-
-export enum ECurrentNewsButtonsText {
-  SAVE = "Сохранить",
-  EDIT = "Редактировать",
-}
 
 const CurrentNewsModal = ({
   isDisable,
@@ -38,6 +31,7 @@ const CurrentNewsModal = ({
     ECurrentNewsButtonsText.EDIT
   );
   const { getItem, setItem } = useLocalStorage(EUseLocalStorage.NEWS);
+  const [error, setError] = useState<string | null>(null);
 
   const getItemNews: NewsItemProps[] = getItem() || [];
 
@@ -51,9 +45,18 @@ const CurrentNewsModal = ({
       item.id === news.id ? { ...item, ...data } : item
     );
 
-    setItem(updatedNews);
-    setIsEditMode(ECurrentNewsButtonsText.EDIT);
-    setIsVisible(false);
+    if (!data.title || !data.content) {
+      setError("Заполните все поля");
+      return;
+    }
+
+    try {
+      setItem(updatedNews);
+      setIsEditMode(ECurrentNewsButtonsText.EDIT);
+      setIsVisible(false);
+    } catch (error) {
+      if (error instanceof Error) setError(error.message);
+    }
   };
 
   const handleDeleteNews = () => {
@@ -75,7 +78,7 @@ const CurrentNewsModal = ({
         {isEditMode === ECurrentNewsButtonsText.EDIT ? (
           <CurrentNewsText news={news} />
         ) : (
-          <CurrentNewsEdit news={news} />
+          <CurrentNewsEdit news={news} error={error} />
         )}
 
         <div className={styles.currentNewsModalButtons}>
@@ -129,8 +132,11 @@ const CurrentNewsText = ({ news }: NewsProps) => {
     </>
   );
 };
+type CurrentNewsEditProps = {
+  error: string | null;
+} & NewsProps;
 
-const CurrentNewsEdit = ({ news }: NewsProps) => {
+const CurrentNewsEdit = ({ news, error }: CurrentNewsEditProps) => {
   return (
     <>
       <Ptag size="s" className={styles.currentNewsDate}>
@@ -143,6 +149,12 @@ const CurrentNewsEdit = ({ news }: NewsProps) => {
         className={styles.currentNewsEditContent}
         defaultValue={news.content}
       />
+
+      {error && (
+        <Ptag size="m" isError>
+          {error ?? String(error)}
+        </Ptag>
+      )}
     </>
   );
 };
