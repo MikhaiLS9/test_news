@@ -27,5 +27,3 @@ const CreateNews = () => {
 };
 
 export default CreateNews;
-
-// 520 px текст ареа
