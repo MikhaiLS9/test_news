@@ -4,6 +4,7 @@ export const useLocalStorage = (key: EUseLocalStorage) => {
   const setItem = (value: unknown) => {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
+      window.dispatchEvent(new Event('storage'));
     } catch (error) {
       console.log(error);
     }

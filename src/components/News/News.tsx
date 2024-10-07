@@ -11,7 +11,7 @@ const News = () => {
   return (
     <div className={styles.news}>
       <CreateNews setCreateNews={setCreateNews} />
-      <NewsCart createNews={createNews} />
+      <NewsCart createNews={createNews} setCreateNews={setCreateNews}/>
     </div>
   );
 };

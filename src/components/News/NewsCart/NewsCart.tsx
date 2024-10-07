@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { EUseLocalStorage } from "../../../interfaces/enum";
-import { NewsItemProps } from "../../../interfaces/interfaces.components";
+import {
+  CreateNewsProps,
+  NewsItemProps,
+} from "../../../interfaces/interfaces.components";
 
 import getDateRu from "../../helpers/getDateRu";
 import CurrentNewsModal from "../../Modal/CurrentNewsModal/CurrentNewsModal";
@@ -11,28 +14,54 @@ import Ptag from "../../ui/Ptag/Ptag";
 
 import styles from "./NewsCart.module.css";
 
-export type NewsCartProps = { createNews: NewsItemProps[] | null };
+export type NewsCartProps = {
+  setCreateNews: React.Dispatch<React.SetStateAction<NewsItemProps[] | null>>;
+};
 
-const NewsCart = ({ createNews }: NewsCartProps) => {
+const NewsCart = ({ setCreateNews }: NewsCartProps) => {
   const { getItem } = useLocalStorage(EUseLocalStorage.NEWS);
   const localNewsData = getItem();
 
-  const currentNews: NewsItemProps[] = createNews ? createNews : localNewsData;
-  console.log(currentNews);
+  const [currentNews, setCurrentNews] = useState<NewsItemProps[]>(
+    localNewsData || []
+  );
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const updatedNews = getItem();
+      if (updatedNews) {
+        setCurrentNews(updatedNews);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [getItem]);
 
   return (
     <section className={styles.newsCart}>
-      {!currentNews && <div>новость нет</div>}
-      {currentNews && <CurrentNewsItems currentNews={currentNews} />}
+      {currentNews.length === 0 ? (
+        <div>Новость нет</div>
+      ) : (
+        <CurrentNewsItems
+          currentNews={currentNews}
+          setCreateNews={setCreateNews}
+        />
+      )}
     </section>
   );
 };
 
 export default NewsCart;
 
-export type CurrentNewsItems = { currentNews: NewsItemProps[] };
+export type CurrentNewsItems = {
+  currentNews: NewsItemProps[];
+} & CreateNewsProps;
 
-const CurrentNewsItems = ({ currentNews }: CurrentNewsItems) => {
+const CurrentNewsItems = ({ currentNews, setCreateNews }: CurrentNewsItems) => {
   const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
   const [visibleModalId, setVisibleModalId] = useState<number | null | boolean>(
     null
@@ -72,6 +101,8 @@ const CurrentNewsItems = ({ currentNews }: CurrentNewsItems) => {
                 isVisible={modalIsVisible}
                 setIsVisible={setVisibleModalId}
                 zIndex="100"
+                currentNews={currentNews}
+                setCreateNews={setCreateNews}
               />
             )}
           </div>

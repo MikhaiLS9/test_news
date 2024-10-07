@@ -3,6 +3,7 @@
   flex-direction: column;
   row-gap: var(--spacing-medium);
   width: 100%;
+  height: 100%;
 }
 
 .createNewsForm textarea {
@@ -10,5 +11,6 @@
 }
 
 .createNewsForm button {
+  margin-top: auto;
   align-self: flex-start;
 }

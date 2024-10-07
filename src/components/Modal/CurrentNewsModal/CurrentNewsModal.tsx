@@ -5,6 +5,7 @@ import {
 } from "../../../interfaces/interfaces.components";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { EUseLocalStorage } from "../../../interfaces/enum";
+import { CurrentNewsItems } from "../../News/NewsCart/NewsCart";
 
 import getDateRu from "../../helpers/getDateRu";
 import Button from "../../ui/Button/Button";
@@ -17,7 +18,9 @@ import TextArea from "../../ui/TextArea/TextArea";
 import styles from "./CurrentNewsModal.module.css";
 
 export type NewsProps = { news: NewsItemProps };
-export type CurrentNewsModalProps = {} & ModalProps & NewsProps;
+export type CurrentNewsModalProps = {} & ModalProps &
+  NewsProps &
+  CurrentNewsItems;
 
 export enum ECurrentNewsButtonsText {
   SAVE = "Сохранить",
@@ -30,6 +33,7 @@ const CurrentNewsModal = ({
   setIsVisible,
   zIndex,
   news,
+  setCreateNews,
 }: CurrentNewsModalProps) => {
   const [isEditMode, setIsEditMode] = useState<ECurrentNewsButtonsText>(
     ECurrentNewsButtonsText.EDIT
@@ -49,15 +53,16 @@ const CurrentNewsModal = ({
     );
 
     setItem(updatedNews);
-
+    setCreateNews(updatedNews);
     setIsEditMode(ECurrentNewsButtonsText.EDIT);
+    setIsVisible(false);
   };
 
   const handleDeleteNews = () => {
     const updatedNews = getItemNews.filter((item) => item.id !== news.id);
 
     setItem(updatedNews);
-
+    setCreateNews(updatedNews);
     setIsVisible(false);
   };
 
@@ -135,11 +140,11 @@ const CurrentNewsEdit = ({ news }: NewsProps) => {
         {getDateRu(news?.date)}
       </Ptag>
 
-      <Input name="title" defaultValue={news?.title} />
+      <Input name="title" defaultValue={news.title} />
       <TextArea
         name="content"
-        defaultValue={news?.content}
         className={styles.currentNewsEditContent}
+        defaultValue={news.content}
       />
     </>
   );
