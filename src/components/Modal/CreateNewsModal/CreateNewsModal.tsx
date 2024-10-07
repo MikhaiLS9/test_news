@@ -1,18 +1,14 @@
 import FormNewsModal from "../FormNewsModal/FormNewsModal";
 import CreateNewsForm from "./CreateNewsForm/CreateNewsForm";
-import {
-  CreateNewsProps,
-  ModalProps,
-} from "../../../interfaces/interfaces.components";
+import { ModalProps } from "../../../interfaces/interfaces.components";
 import { FormEvent } from "react";
 import { v4 } from "uuid";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { EUseLocalStorage } from "../../../interfaces/enum";
 
-export type CreateNewsModalProps = {} & ModalProps & CreateNewsProps;
+export type CreateNewsModalProps = {} & ModalProps;
 
 const CreateNewsModal = ({
-  setCreateNews,
   isDisable,
   isVisible,
   setIsVisible,
@@ -31,7 +27,6 @@ const CreateNewsModal = ({
     const updatedItems = [...currentItems, newItem];
 
     setItem([...updatedItems]);
-    setCreateNews([...updatedItems]);
 
     setIsVisible(false);
   };

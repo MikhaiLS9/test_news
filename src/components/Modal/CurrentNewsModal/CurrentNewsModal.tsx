@@ -33,7 +33,6 @@ const CurrentNewsModal = ({
   setIsVisible,
   zIndex,
   news,
-  setCreateNews,
 }: CurrentNewsModalProps) => {
   const [isEditMode, setIsEditMode] = useState<ECurrentNewsButtonsText>(
     ECurrentNewsButtonsText.EDIT
@@ -53,7 +52,6 @@ const CurrentNewsModal = ({
     );
 
     setItem(updatedNews);
-    setCreateNews(updatedNews);
     setIsEditMode(ECurrentNewsButtonsText.EDIT);
     setIsVisible(false);
   };
@@ -62,7 +60,6 @@ const CurrentNewsModal = ({
     const updatedNews = getItemNews.filter((item) => item.id !== news.id);
 
     setItem(updatedNews);
-    setCreateNews(updatedNews);
     setIsVisible(false);
   };
 

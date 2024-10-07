@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { EUseLocalStorage } from "../../../interfaces/enum";
-import {
-  CreateNewsProps,
-  NewsItemProps,
-} from "../../../interfaces/interfaces.components";
+import { NewsItemProps } from "../../../interfaces/interfaces.components";
 
 import getDateRu from "../../helpers/getDateRu";
 import CurrentNewsModal from "../../Modal/CurrentNewsModal/CurrentNewsModal";
@@ -18,7 +15,7 @@ export type NewsCartProps = {
   setCreateNews: React.Dispatch<React.SetStateAction<NewsItemProps[] | null>>;
 };
 
-const NewsCart = ({ setCreateNews }: NewsCartProps) => {
+const NewsCart = () => {
   const { getItem } = useLocalStorage(EUseLocalStorage.NEWS);
   const localNewsData = getItem();
 
@@ -48,7 +45,7 @@ const NewsCart = ({ setCreateNews }: NewsCartProps) => {
       ) : (
         <CurrentNewsItems
           currentNews={currentNews}
-          setCreateNews={setCreateNews}
+          // setCreateNews={setCreateNews}
         />
       )}
     </section>
@@ -59,9 +56,9 @@ export default NewsCart;
 
 export type CurrentNewsItems = {
   currentNews: NewsItemProps[];
-} & CreateNewsProps;
+};
 
-const CurrentNewsItems = ({ currentNews, setCreateNews }: CurrentNewsItems) => {
+const CurrentNewsItems = ({ currentNews }: CurrentNewsItems) => {
   const [modalIsVisible, setModalIsVisible] = useState<boolean>(false);
   const [visibleModalId, setVisibleModalId] = useState<number | null | boolean>(
     null
@@ -102,7 +99,6 @@ const CurrentNewsItems = ({ currentNews, setCreateNews }: CurrentNewsItems) => {
                 setIsVisible={setVisibleModalId}
                 zIndex="100"
                 currentNews={currentNews}
-                setCreateNews={setCreateNews}
               />
             )}
           </div>
